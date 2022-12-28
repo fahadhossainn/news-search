@@ -49,21 +49,21 @@ const generateData = async () => {
       fetch(urlSports),
       fetch(urlHealth),
     ]);
-    (latest = await latest.json()),
-      (science = await science.json()),
-      (business = await business.json()),
-      (sports = await sports.json()),
-      (health = await health.json());
-
+    [latest, science, business, sports, health] = await Promise.all([
+      latest.json(),
+      science.json(),
+      business.json(),
+      sports.json(),
+      health.json(),
+    ]);
     (dataContainer.latest = latest.data),
       (dataContainer.science = science.data),
       (dataContainer.business = business.data),
       (dataContainer.sports = sports.data),
       (dataContainer.health = health.data);
+    renderData(dataContainer.latest, 1);
   } catch (err) {
     renderError();
-  } finally {
-    renderData(dataContainer.latest, 1);
   }
 };
 
@@ -181,7 +181,7 @@ window.addEventListener("load", () => {
   }, 1200);
   setTimeout(() => {
     contentOverlay.classList.add("hidden");
-  }, 3500);
+  }, 2500);
 });
 
 ////////rendering individual Page/////////////////////////////////////////

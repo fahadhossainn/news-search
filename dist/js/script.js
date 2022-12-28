@@ -648,7 +648,9 @@ var generateData = /*#__PURE__*/ (function () {
         sports,
         health,
         _yield$Promise$all,
-        _yield$Promise$all2;
+        _yield$Promise$all2,
+        _yield$Promise$all3,
+        _yield$Promise$all4;
       return _regeneratorRuntime().wrap(
         function _callee$(_context) {
           while (1)
@@ -672,48 +674,41 @@ var generateData = /*#__PURE__*/ (function () {
                 sports = _yield$Promise$all2[3];
                 health = _yield$Promise$all2[4];
                 _context.next = 12;
-                return latest.json();
+                return Promise.all([
+                  latest.json(),
+                  science.json(),
+                  business.json(),
+                  sports.json(),
+                  health.json(),
+                ]);
               case 12:
-                latest = _context.sent;
-                _context.next = 15;
-                return science.json();
-              case 15:
-                science = _context.sent;
-                _context.next = 18;
-                return business.json();
-              case 18:
-                business = _context.sent;
-                _context.next = 21;
-                return sports.json();
-              case 21:
-                sports = _context.sent;
-                _context.next = 24;
-                return health.json();
-              case 24:
-                health = _context.sent;
+                _yield$Promise$all3 = _context.sent;
+                _yield$Promise$all4 = _slicedToArray(_yield$Promise$all3, 5);
+                latest = _yield$Promise$all4[0];
+                science = _yield$Promise$all4[1];
+                business = _yield$Promise$all4[2];
+                sports = _yield$Promise$all4[3];
+                health = _yield$Promise$all4[4];
                 (dataContainer.latest = latest.data),
                   (dataContainer.science = science.data),
                   (dataContainer.business = business.data),
                   (dataContainer.sports = sports.data),
                   (dataContainer.health = health.data);
-                _context.next = 31;
+                renderData(dataContainer.latest, 1);
+                _context.next = 26;
                 break;
-              case 28:
-                _context.prev = 28;
+              case 23:
+                _context.prev = 23;
                 _context.t0 = _context["catch"](0);
                 renderError();
-              case 31:
-                _context.prev = 31;
-                renderData(dataContainer.latest, 1);
-                return _context.finish(31);
-              case 34:
+              case 26:
               case "end":
                 return _context.stop();
             }
         },
         _callee,
         null,
-        [[0, 28, 31, 34]]
+        [[0, 23]]
       );
     })
   );
@@ -852,7 +847,7 @@ window.addEventListener("load", function () {
   }, 1200);
   setTimeout(function () {
     contentOverlay.classList.add("hidden");
-  }, 3500);
+  }, 2500);
 });
 
 ////////rendering individual Page/////////////////////////////////////////
