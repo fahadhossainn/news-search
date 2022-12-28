@@ -610,23 +610,23 @@ var prevBtn = document.querySelector(".content__pagination--left");
 var nextBtn = document.querySelector(".content__pagination--right");
 var items = document.querySelectorAll(".item");
 var scrollBtn = document.querySelector(".scroll");
-var itemPerPage = 6;
+var itemPerPage = 10;
 var currentDomain = "latest";
 var urlLatest = ""
   .concat(cors, "http://api.mediastack.com/v1/news?access_key=")
-  .concat(API_KEY, "&languages=en");
+  .concat(API_KEY, "&languages=en&limit=100");
 var urlBusiness = ""
   .concat(cors, "http://api.mediastack.com/v1/news?access_key=")
-  .concat(API_KEY, "&categories=business&languages=en");
+  .concat(API_KEY, "&categories=business&languages=en&limit=100");
 var urlHealth = ""
   .concat(cors, "http://api.mediastack.com/v1/news?access_key=")
-  .concat(API_KEY, "&categories=health&languages=en");
+  .concat(API_KEY, "&categories=health&languages=en&limit=100");
 var urlScience = ""
   .concat(cors, "http://api.mediastack.com/v1/news?access_key=")
-  .concat(API_KEY, "&categories=science&languages=en");
+  .concat(API_KEY, "&categories=science&languages=en&limit=100");
 var urlSports = ""
   .concat(cors, "http://api.mediastack.com/v1/news?access_key=")
-  .concat(API_KEY, "&categories=sports&languages=en");
+  .concat(API_KEY, "&categories=sports&languages=en&limit=100");
 var dataContainer = {
   latest: [],
   currLatest: 1,
@@ -717,13 +717,17 @@ var generateData = /*#__PURE__*/ (function () {
   };
 })();
 var generateMarkup = function generateMarkup(item) {
-  var imageUrl, sourceName, publishedDate, title, description, link;
+  var imageUrl, sourceName, publishedDate, title, description, link, date;
   title = item.title;
   link = item.url;
   sourceName = item.source;
   imageUrl = !item.image ? "./src/img/fallbackImage.jpg" : item.image;
   description = item.description;
-  var date = new Date(item.publishedAt);
+  if (!item.publishedAt) {
+    date = new Date();
+  } else {
+    date = new Date(item.publishedAt);
+  }
   var months = [
     "Jan",
     "Feb",
@@ -784,7 +788,7 @@ var renderSearchResults = /*#__PURE__*/ (function () {
                 ""
                   .concat(cors, "http://api.mediastack.com/v1/news?access_key=")
                   .concat(API_KEY, "&keywords=")
-                  .concat(query, "&languages=en")
+                  .concat(query, "&languages=en&limit=100")
               );
             case 3:
               results = _context2.sent;

@@ -17,14 +17,14 @@ const prevBtn = document.querySelector(".content__pagination--left");
 const nextBtn = document.querySelector(".content__pagination--right");
 const items = document.querySelectorAll(".item");
 const scrollBtn = document.querySelector(".scroll");
-const itemPerPage = 6;
+const itemPerPage = 10;
 let currentDomain = "latest";
 
-const urlLatest = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&languages=en`;
-const urlBusiness = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=business&languages=en`;
-const urlHealth = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=health&languages=en`;
-const urlScience = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=science&languages=en`;
-const urlSports = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=en`;
+const urlLatest = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&languages=en&limit=100`;
+const urlBusiness = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=business&languages=en&limit=100`;
+const urlHealth = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=health&languages=en&limit=100`;
+const urlScience = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=science&languages=en&limit=100`;
+const urlSports = `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=en&limit=100`;
 
 let dataContainer = {
   latest: [],
@@ -68,13 +68,17 @@ const generateData = async () => {
 };
 
 const generateMarkup = (item) => {
-  let imageUrl, sourceName, publishedDate, title, description, link;
+  let imageUrl, sourceName, publishedDate, title, description, link, date;
   title = item.title;
   link = item.url;
   sourceName = item.source;
   imageUrl = !item.image ? "./src/img/fallbackImage.jpg" : item.image;
   description = item.description;
-  const date = new Date(item.publishedAt);
+  if (!item.publishedAt) {
+    date = new Date();
+  } else {
+    date = new Date(item.publishedAt);
+  }
   const months = [
     "Jan",
     "Feb",
@@ -133,7 +137,7 @@ const renderData = (data, currPage) => {
 const renderSearchResults = async (query) => {
   contentHeading.textContent = `Search results for ${query}`;
   let results = await fetch(
-    `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&keywords=${query}&languages=en`
+    `${cors}http://api.mediastack.com/v1/news?access_key=${API_KEY}&keywords=${query}&languages=en&limit=100`
   );
   results = await results.json();
   results = results.data;
