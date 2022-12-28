@@ -1,0 +1,30 @@
+// This file holds what we might call the boilerplate code for the project.
+// In there, you might find the reset file, some typographic rules, and probably a
+// stylesheet defining some standard styles for commonly used HTML elements
+// # Reset/normalize
+// # Typography rules
+// # Etc.
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  @media only screen and (min-width: $breakpoint-large) {
+    font-size: 80%;
+  }
+}
+
+body {
+  line-height: 1.7;
+  box-sizing: border-box;
+  background-color: $color-primary-light;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass ./src/sass/main.scss ./src/css/main.css -w",
+    "compile:sass": "node-sass ./src/sass/main.scss ./src/css/main.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' ./src/css/main.comp.css -o ./src/css/main.comp.prefix.css",
+    "compress:css": "node-sass ./src/css/main.comp.prefix.css ./src/css/main.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass  prefix:css compress:css",
+    "compile:js": "babel src -d dist"
+  },
+  "author": "Fahad Hossain",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.13",
+    "node-sass": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.1.0"
+  }
+}

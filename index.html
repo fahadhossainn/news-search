@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <script defer src="./dist/js/script.js"></script>
+    <title>DN | Everyday News At One Place</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="sidebar__top">
+          <img
+            src="./src/img/bars-solid.svg"
+            alt="menu"
+            class="sidebar__top--icon"
+          />
+        </div>
+        <div class="navigation">
+          <li class="navigation__item item item-active">Home</li>
+          <li class="navigation__item item">business</li>
+          <li class="navigation__item item">science</li>
+          <li class="navigation__item item">sports</li>
+          <li class="navigation__item item">health</li>
+        </div>
+        <div class="mobile-menu navigation-hidden">
+          <li class="mobile-menu__item item item-active">Home</li>
+          <li class="mobile-menu__item item">business</li>
+          <li class="mobile-menu__item item">science</li>
+          <li class="mobile-menu__item item">sports</li>
+          <li class="mobile-menu__item item">health</li>
+        </div>
+      </div>
+      <div class="main">
+        <div class="header">
+          <div class="header__logo">
+            <span class="header__logo--text">DN</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <h3 class="content__heading">trending news right now</h3>
+
+          <div class="content__article--container">
+            <!-- <div class="article">
+              <div class="article__figure">
+                <img
+                  src="https://ichef.bbci.co.uk/news/1024/branded_news/12FB5/production/_128094777_a5ec5423-b0ca-4498-b033-1b2f20c9c41f.jpg"
+                  alt=""
+                  class="article__image"
+                />
+              </div>
+              <p class="article__source">source : bbc news</p>
+              <p class="article__date">Published At : Fri 23 Dec 2022</p>
+              <p class="article__title">
+                North Korea sold arms to Russia's Wagner group, US says
+              </p>
+              <p class="article__description">
+                The White House says North Korea provided missiles and rockets
+                to be used in Ukraine, which Pyongyang denies
+              </p>
+              <div>
+                <a href="#" target="_blank" class="article__button"
+                  >read more</a
+                >
+              </div>
+            </div> -->
+
+            <!--  -->
+          </div>
+          <div class="content__pagination">
+            <p class="content__pagination--left">prev</p>
+            <p class="content__pagination--right">next</p>
+          </div>
+        </div>
+
+        <div class="content--overlay">
+          <img src="./src/img/loader.svg" alt="loading..." />
+          <p class="content--overlay-text">loading news...</p>
+        </div>
+        <div class="error--overlay hidden">
+          <p class="error--overlay-text">
+            Too many request was made... <br />Try after a while....
+          </p>
+        </div>
+      </div>
+
+      <!-- Saearch Bar.......... -->
+      <div class="search">
+        <form action="#" class="search__form">
+          <input type="text" class="search__input input-hidden" />
+        </form>
+        <span class="search__icon">
+          <img src="./src/img/search.svg" alt="saerch" />
+        </span>
+      </div>
+
+      <div class="scroll hidden">
+        <img src="./src/img/angle-up.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="overlay">
+      <div class="overlay-box">&nbsp;</div>
+      <p class="overlay-text">Every News At one Place</p>
+    </div>
+  </body>
+</html>
